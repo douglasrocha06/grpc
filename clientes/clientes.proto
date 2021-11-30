@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package clientes;
+
+message ClientesRequest {
+    int32 idCliente = 1;
+}
+
+message ClienteResponse {
+    int32 idCliente = 1;
+    string nome = 2;
+}
+
+
+
+message ClientesList {
+    repeated ClienteResponse cliente = 1;
+}
+
+message Empty {}
+
+service Clientes {
+    rpc BuscaCliente(ClientesRequest) returns (ClienteResponse) {}
+    rpc TodosClientes(Empty) returns (ClientesList) {}
+}
